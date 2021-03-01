@@ -10,6 +10,6 @@
 fish_fun <- function(species, common, rare, total){
   common = which.max(summary(species))
   rare = which.min(summary(species))
-  total = length(summary(species))
+  total = sum(summary(species))
   return(list(common = common, rare = rare, total = total))
 }

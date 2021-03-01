@@ -11,19 +11,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(tidyverse)
-
 fish_data <- read.table("data/fish.txt",
                         header = TRUE) %>% 
   rename("species" = x) %>% 
-  drop_na()
+  drop_na() 
 
-fish_factor <- as.factor(fish_data)
+fish_factor <- as.factor(fish_data$species)
+# head(fish_factor) this should be better now
+
 summary(fish_factor)
 
 source("R/fish_fun.R")
-
 fish_summary <- fish_fun(species = fish_factor)
+fish_summary  # she mentioned to find the total number of fish so I think just doing total = sum(summary(species)) works in the function and not length.
 
-fish_summary
+## next, include an option (defaulted to FALSE) that if TRUE also returns a histogram of the number of each fish type, with a title giving the total number of fish caught. Remember that you can save a graph as a variable.
 ```
 
